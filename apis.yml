@@ -1,7 +1,12 @@
 aid: a-mark-precious-metals
-url: https://raw.githubusercontent.com/api-evangelist/a-mark-precious-metals/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/a-mark-precious-metals/refs/heads/main/apis.yml
 modified: '2026-03-21'
 apis: []
 common:
   - type: Website
     url: https://www.a-mark-precious-metals.com
+description: >-
+  A-Mark Precious Metals is a full-service precious metals trading company that wholesales
+  gold, silver, platinum, and palladium bullion and coins to dealers, financial institutions,
+  and investors.
