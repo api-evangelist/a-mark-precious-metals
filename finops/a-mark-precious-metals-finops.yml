@@ -1,165 +1,64 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: A-Mark Precious Metals
+providerId: a-mark-precious-metals
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - Precious Metals
+  - Trading
+  - Finance
+  - FinOps
+  - FOCUS
+description: A-Mark integrations are settled inside a wholesale-trading agreement; there is no metered
+  API invoice. FinOps mapping is structural only.
+notes: No public developer pricing — placeholder only. Costs flow through metals trading P&L, not a metered
+  API line item.
+sources:
+  - https://www.amark.com/services
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: A-Mark Precious Metals
-providerId: a-mark-precious-metals
-publisherName: A-Mark Precious Metals
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Precious Metals
-  - Trading
-  - Wholesale
-  - Gold
-  - Silver
-  - Bullion
-  - Finance
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the A-Mark Precious Metals API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: A-Mark Precious Metals, Inc.
+serviceCategory: Financial Services / Commodities
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Contract
+  billingFrequency: Per-Invoice
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: A-Mark Precious Metals
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Financial Services / Commodities
   ProviderName: A-Mark Precious Metals
-  PublisherName: A-Mark Precious Metals
-  InvoiceIssuerName: A-Mark Precious Metals
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: A-Mark Precious Metals, Inc.
+  InvoiceIssuerName: A-Mark Precious Metals, Inc.
   BillingCurrency: USD
-  ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
+  - name: dealer_contract
+    description: Wholesale dealer relationship — not a metered unit.
+    unit: contract
+    aggregation: count
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
-    dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: A-Mark Wholesale Trading
-    baseURL: ''
-    tags:
-      - Precious Metals
-      - Trading
-      - Wholesale
-      - Gold
-      - Silver
-      - Platinum
-      - Palladium
-    serviceName: A-Mark Wholesale Trading
-    serviceCategory: API
-  - name: A-Mark Logistics and Storage
-    baseURL: ''
-    tags:
-      - Precious Metals
-      - Logistics
-      - Storage
-      - Warehousing
-    serviceName: A-Mark Logistics and Storage
-    serviceCategory: API
-  - name: A-Mark Minting
-    baseURL: ''
-    tags:
-      - Precious Metals
-      - Minting
-      - Custom Coins
-      - Manufacturing
-    serviceName: A-Mark Minting
-    serviceCategory: API
-  - name: A-Mark Collateralized Loans
-    baseURL: ''
-    tags:
-      - Precious Metals
-      - Finance
-      - Loans
-      - Collateral
-    serviceName: A-Mark Collateralized Loans
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - dealer
+principles:
+  - name: Visibility
+    description: Track integration cost as part of trading-desk operations and metals procurement spend;
+      A-Mark does not provide a metered usage feed.
+  - name: Allocation
+    description: Allocate integration cost to the trading or treasury function that owns the wholesale
+      relationship.
+  - name: Optimization
+    description: Optimize quote/order flows by batching where the contract allows and aligning trading
+      activity with desk hours.
+  - name: Accountability
+    description: Trading operations leadership owns the relationship; IT owns integration runtime. Review
+      transaction volume during quarterly business reviews with A-Mark.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
