@@ -91,6 +91,8 @@ apis:
       holdings.
 
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/a-mark-precious-metals
   - type: Website
     url: https://www.amark.com
   - type: Documentation
