@@ -91,6 +91,8 @@ apis:
       holdings.
 
 common:
+  - type: DomainSecurity
+    url: security/a-mark-precious-metals-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/a-mark-precious-metals
   - type: Website
