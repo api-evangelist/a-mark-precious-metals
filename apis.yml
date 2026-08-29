@@ -40,9 +40,14 @@ description: >-
   gold, silver, platinum, and palladium bullion and coins to dealers, financial institutions,
   and investors. They operate trading desks 17 hours daily across global locations (US, Asia,
   Vienna) and offer wholesale sales, direct-to-consumer, logistics and storage, minting, and
-  collateralized loans services.
+  collateralized loans services. The company is renaming to Gold.com, Inc. and transferring
+  to the NYSE under the ticker GOLD, alongside its $33M acquisition of Monex Deposit
+  Company; A-Mark now sits as one brand inside the Gold.com brand family. A-Mark runs no
+  public developer program: trading access is through the credentialed A-Mark Trading
+  Portal at portal.amark.com, whose OAuth 2.0 discovery document is the only
+  machine-readable contract the company serves.
 created: '2026-04-19'
-modified: '2026-04-19'
+modified: '2026-08-29'
 specificationVersion: '0.23'
 apis:
   - aid: a-mark-precious-metals:a-mark-wholesale-trading
@@ -55,10 +60,27 @@ apis:
       - Silver
       - Platinum
       - Palladium
-    humanURL: https://www.amark.com
+    humanURL: https://portal.amark.com/
+    baseURL: https://trading.amark.com
+    x-base-url-provenance: >-
+      Established by probe on 2026-08-29, not from documentation — A-Mark publishes no API
+      reference. trading.amark.com resolves under A-Mark's own domain and answers as an
+      ASP.NET Web API: a request to /v1/* returns the JSON envelope
+      {"Message":"No HTTP resource was found that matches the request URI
+      'https://trading.amark.com:8444/v1/openapi.json'."} while an unrouted path returns
+      an HTML error page, so a versioned /v1 Web API is routing there. The human trading
+      surface is the A-Mark Trading Portal at portal.amark.com, whose OAuth token endpoint
+      (https://portal.amark.com/connect/token) is the documented door. No operation on
+      this base is callable anonymously and no path inventory is published.
     properties:
       - url: https://www.amark.com/services
         type: Documentation
+      - url: https://portal.amark.com/.well-known/openid-configuration
+        type: OpenIDConnect
+      - url: authentication/a-mark-precious-metals-authentication.yml
+        type: Authentication
+      - url: scopes/a-mark-precious-metals-scopes.yml
+        type: OAuthScopes
     description: >-
       A-Mark's wholesale precious metals trading platform enables dealers and financial
       institutions to buy and sell gold, silver, platinum, and palladium bullion products.
@@ -114,16 +136,44 @@ apis:
       holdings.
 
 common:
+  - type: WellKnown
+    url: well-known/a-mark-precious-metals-well-known.yml
+  - type: Authentication
+    url: authentication/a-mark-precious-metals-authentication.yml
+  - type: OAuthScopes
+    url: scopes/a-mark-precious-metals-scopes.yml
+  - type: Conformance
+    url: conformance/a-mark-precious-metals-conformance.yml
+  - type: Conventions
+    url: conventions/a-mark-precious-metals-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/a-mark-precious-metals-lifecycle.yml
+  - type: Packages
+    url: packages/a-mark-precious-metals-packages.yml
+  - type: LLMsTxt
+    url: llms/a-mark-precious-metals-llms.txt
+  - type: Plans
+    url: plans/a-mark-precious-metals-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/a-mark-precious-metals-rate-limits.yml
+  - type: FinOps
+    url: finops/a-mark-precious-metals-finops.yml
+  - type: Login
+    url: https://portal.amark.com/login
+  - type: TermsOfService
+    url: https://www.amark.com/terms-of-service/
+  - type: PrivacyPolicy
+    url: https://www.amark.com/privacy-policy/
   - type: DomainSecurity
     url: security/a-mark-precious-metals-domain-security.yml
   - type: LinkedIn
-    url: https://www.linkedin.com/company/a-mark-precious-metals
+    url: https://www.linkedin.com/company/goldcominc
   - type: Website
     url: https://www.amark.com
   - type: Documentation
     url: https://www.amark.com/services
   - type: Contact
-    url: https://www.amark.com/contact
+    url: https://www.gold.com/contact/
   - type: Features
     data:
       - name: Wholesale Trading
@@ -200,3 +250,8 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-29'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1

@@ -1,0 +1,74 @@
+generated: '2026-08-29'
+method: probed
+source: https://portal.amark.com/.well-known/openid-configuration
+provider: A-Mark Precious Metals
+providerId: a-mark-precious-metals
+description: >-
+  A-Mark publishes no developer authentication documentation, but the A-Mark Trading
+  Portal serves a live OAuth 2.0 / OpenID Connect discovery document that describes its
+  token model in full. This artifact is read verbatim from that document plus a probe of
+  the token endpoint itself; nothing here is inferred from prose.
+summary: >-
+  OAuth 2.0 Resource Owner Password Credentials (ROPC) with refresh tokens, confidential
+  clients authenticating by client secret. There is no authorization_endpoint, so this is
+  a first-party trading-portal login, not a third-party authorization surface — an
+  integrator cannot obtain a token without A-Mark issuing them portal credentials and a
+  client secret.
+schemes:
+  - name: OAuth2 Password Grant
+    type: oauth2
+    flow: password
+    token_url: https://portal.amark.com/connect/token
+    issuer: https://portal.amark.com/
+    jwks_uri: https://portal.amark.com/.well-known/jwks
+    client_authentication:
+      - client_secret_basic
+      - client_secret_post
+    grant_types:
+      - password
+      - refresh_token
+    refresh_supported: true
+    source: https://portal.amark.com/.well-known/openid-configuration
+  - name: OAuth2 Refresh Token
+    type: oauth2
+    flow: refresh_token
+    token_url: https://portal.amark.com/connect/token
+    source: https://portal.amark.com/.well-known/openid-configuration
+claims_supported: [aud, exp, iat, iss, jti, sub]
+subject_types_supported: [public]
+gaps:
+  - id: no-authorization-endpoint
+    detail: >-
+      The discovery document omits authorization_endpoint, userinfo_endpoint,
+      response_types_supported and id_token_signing_alg_values_supported. Despite
+      advertising the openid scope this is not a usable OIDC authorization-code provider;
+      only the direct-credential grant works.
+  - id: empty-jwks
+    detail: >-
+      https://portal.amark.com/.well-known/jwks is served and returns {"keys":[]}. No
+      public signing key is published, so a relying party cannot independently verify a
+      token issued by this portal.
+  - id: no-public-docs
+    detail: >-
+      No developer portal, API reference, or written authentication guide was found on
+      amark.com or gold.com. Credentials are issued through the dealer onboarding path
+      (newaccounts@amark.com / trading@amark.com), not self-service.
+x-evidence:
+  - url: https://portal.amark.com/.well-known/openid-configuration
+    http_status: 200
+    content_type: application/json;charset=UTF-8
+    bytes: 575
+  - url: https://portal.amark.com/.well-known/jwks
+    http_status: 200
+    bytes: 11
+  - url: https://portal.amark.com/connect/token
+    http_status: 400
+    note: >-
+      GET returns {"error":"invalid_request","error_description":"The specified HTTP
+      method is not valid."} — a live OAuth 2.0 error envelope confirming the endpoint
+      is real and enforcing POST.
+  - url: https://portal.amark.com/login
+    http_status: 200
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

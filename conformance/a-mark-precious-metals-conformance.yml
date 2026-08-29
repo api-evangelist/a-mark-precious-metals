@@ -1,0 +1,109 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  Live probes of portal.amark.com, trading.amark.com and www.amark.com, plus a search of
+  amark.com and gold.com for published compliance claims.
+provider: A-Mark Precious Metals
+providerId: a-mark-precious-metals
+description: >-
+  A-Mark publishes no developer documentation, so every entry below is asserted from a
+  document actually served by an A-Mark host, or recorded as not-published. No standard is
+  claimed on the strength of marketing prose.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      portal.amark.com serves an OAuth 2.0 discovery document declaring token_endpoint
+      https://portal.amark.com/connect/token, grant_types_supported [password,
+      refresh_token] and token_endpoint_auth_methods_supported [client_secret_basic,
+      client_secret_post]. A GET on the token endpoint returns a spec-shaped
+      {"error":"invalid_request"} envelope.
+    source: https://portal.amark.com/.well-known/openid-configuration
+  - id: oidc-discovery
+    conforms: partial
+    evidence: >-
+      The document is served at the OIDC-standard path and carries issuer, jwks_uri,
+      scopes_supported, claims_supported and subject_types_supported. It omits the
+      REQUIRED authorization_endpoint, response_types_supported and
+      id_token_signing_alg_values_supported, and its jwks returns {"keys":[]}, so it is
+      not a conformant OpenID Provider configuration.
+    source: https://portal.amark.com/.well-known/openid-configuration
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: false
+    evidence: >-
+      /.well-known/oauth-authorization-server returns the Angular SPA shell (200,
+      text/html, 3602 bytes), not RFC 8414 metadata.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: No /.well-known/security.txt on any A-Mark or Gold.com host.
+  - id: openapi
+    conforms: false
+    evidence: >-
+      No OpenAPI or Swagger document found. Probed /openapi.json, /openapi.yaml,
+      /swagger.json, /swagger/v1/swagger.json, /v1/openapi.json, /api-docs, /docs, /redoc
+      on www.amark.com, amark.com, portal.amark.com and trading.amark.com. All returned
+      404, or a 200 HTML SPA shell that does not parse as a spec.
+  - id: graphql
+    conforms: false
+    evidence: /graphql returned 404 on trading.amark.com and the SPA shell on portal.amark.com.
+  - id: wsdl-soap
+    conforms: false
+    evidence: >-
+      ?wsdl and /service.asmx?wsdl returned 404 on trading.amark.com; on www.amark.com and
+      portal.amark.com ?wsdl returned the ordinary home page, not a SOAP contract.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      trading.amark.com returns a proprietary {"Message": "..."} error envelope
+      (ASP.NET Web API default), not application/problem+json.
+  - id: wordpress-rest-api
+    conforms: true
+    evidence: >-
+      www.amark.com serves the WordPress REST API index at /wp-json/ (200,
+      application/json, 1,585,035 bytes, 738 routes) and advertises it from the home page
+      via the standard rel="https://api.w.org/" link. Namespaces served: oembed/1.0,
+      wp/v2, wc/v1, wc/v2, wc/v3, wc/store, wc/store/v1, wc-admin, wc-analytics,
+      wc-telemetry, wordfence/v1, yoast/v1, jetpack/v4 and others.
+    source: https://www.amark.com/wp-json/
+    caveat: >-
+      IMPORTANT — this is platform default behaviour, not an A-Mark product. All 19
+      namespaces are stock WordPress/WooCommerce/plugin namespaces; there is no
+      A-Mark-authored namespace anywhere in the index. The WooCommerce Store API does
+      serve A-Mark's real retail catalogue unauthenticated
+      (/wp-json/wc/store/v1/products returned 200 with live bullion products), but A-Mark
+      neither documents nor markets it, so it is recorded here as an observed surface and
+      deliberately NOT registered as an A-Mark API. Crediting a company with an API it
+      never shipped is the error this field exists to prevent.
+domain_standards:
+  regime: capital_markets_trading
+  regime_shortlist: [fix-protocol, mifid-ii, iso-20022]
+  note: >-
+    The shortlist comes from the trading regime's standards[] in scoring.yml. A-Mark runs
+    physical precious-metals trading desks and settles bilaterally under dealer agreements;
+    no FIX session details, MiFID II RTS 27/28 machine-readable reports, or ISO 20022
+    message profiles are published on any A-Mark host. Reward-only check — recorded as
+    not-published, not as a failure.
+  entries:
+    - id: fix-protocol
+      conforms: false
+      evidence: >-
+        No FIX gateway, session configuration, or connectivity page found on amark.com,
+        gold.com, portal.amark.com or trading.amark.com.
+    - id: iso-20022
+      conforms: false
+      evidence: No ISO 20022 message profile published. Settlement is described in prose only.
+    - id: mifid-ii
+      conforms: false
+      evidence: >-
+        A-Mark is a US wholesaler (NASDAQ/NYSE-listed parent); no MiFID II reporting
+        surface published, and no EU venue disclosure found.
+compliance_program:
+  published: false
+  evidence: >-
+    probe-security-programs.py returned vdp=none trust=none. No trust centre, no bug
+    bounty, and no SOC 2 / ISO 27001 / PCI DSS / HIPAA / FedRAMP certification claim
+    appears on www.amark.com/risk/, /esg/governance/, or gold.com. The /risk/ page is an
+    investment-risk disclosure about bullion price volatility, not a security posture.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

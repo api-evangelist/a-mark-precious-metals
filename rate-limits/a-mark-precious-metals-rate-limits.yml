@@ -4,32 +4,44 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: A-Mark Precious Metals
 providerId: a-mark-precious-metals
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+generated: '2026-08-29'
+method: searched
+source: >-
+  Searched amark.com and gold.com for published limits and inspected anonymous response
+  headers from www.amark.com, portal.amark.com and trading.amark.com on 2026-08-29.
+modified: '2026-08-29'
+reconciled: true
 tags:
   - Precious Metals
   - Trading
   - Wholesale
   - Rate Limiting
-description: A-Mark Precious Metals does not publish public rate-limit documentation. Limits are negotiated
-  inside the wholesale dealer agreement.
-notes: No public developer rate-limit documentation — placeholder only.
+description: >-
+  A-Mark publishes no rate limits and returns no rate-limit headers on any anonymous
+  response. This artifact previously carried a 2026-05-04 bulk-sweep placeholder asserting
+  a 429 throttle response and a "Dealer agreement throttling" policy; neither was observed
+  or documented, so both have been removed in favour of a measured zero.
+notes: >-
+  limit_count is 0 by measurement. No X-RateLimit-*, RateLimit- (RFC 9239 draft), or
+  Retry-After header appeared on any probed response, and no throttling status code was
+  observed. Quote and order pacing on the wholesale desk is governed by the bilateral
+  dealer agreement, which A-Mark does not publish — that is a real constraint, but it is
+  not a documented API rate limit and is no longer recorded as one.
+limit_count: 0
+limits: []
+response_headers: []
+exhaustion_status_code: null
 sources:
-  - https://www.amark.com/services
-responseCodes:
-  throttled: 429
-limits:
-  - name: Dealer agreement throttling
-    scope: account
-    metric: varies
-    limit: governed by dealer agreement; no public numeric ceiling
-policies:
-  - name: Contract-defined throttling
-    description: Quote / order rate ceilings are part of the bilateral dealer agreement; coordinate volume
-      changes with A-Mark trading operations.
+  - url: https://www.amark.com/services/
+    http_status: 200
+    note: no limits documented
+  - url: https://portal.amark.com/.well-known/openid-configuration
+    http_status: 200
+    note: no rate-limit headers on the response
+  - url: https://trading.amark.com/v1/openapi.json
+    http_status: 404
+    note: >-
+      anonymous ASP.NET Web API response carried no rate-limit headers
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

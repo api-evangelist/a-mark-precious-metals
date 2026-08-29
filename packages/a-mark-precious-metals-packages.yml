@@ -1,0 +1,45 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  Registry searches on npm, PyPI, RubyGems, NuGet, crates.io, Packagist, pkg.go.dev and
+  Maven Central, plus a GitHub organisation search.
+provider: A-Mark Precious Metals
+providerId: a-mark-precious-metals
+description: >-
+  No first-party A-Mark client library exists in any public package registry, and A-Mark
+  operates no public GitHub organisation. Recorded as a verified absence.
+package_count: 0
+packages: []
+registries_searched:
+  - registry: npm
+    query: amark
+    result: >-
+      One unrelated package named "amark" (publisher aizf, 296878663@qq.com, last
+      published 2020-09-20, v1.0.3). Not first-party — do not associate.
+  - registry: pypi
+    query: amark
+    result: 404 Not Found
+  - registry: github
+    query: amark precious metals (users/orgs search)
+    result: 'total_count 0; https://api.github.com/orgs/amark-precious-metals returns 404'
+  - registry: rubygems
+    result: no first-party gem
+  - registry: nuget
+    result: >-
+      no first-party package, despite the trading stack being ASP.NET (trading.amark.com
+      returns ASP.NET Web API error envelopes)
+  - registry: crates.io
+    result: no first-party crate
+  - registry: packagist
+    result: no first-party package
+  - registry: maven-central
+    result: no first-party artifact
+  - registry: pkg.go.dev
+    result: no first-party module
+note: >-
+  Every entry above is a checked absence, not an unchecked field. Because there is no
+  package, there is no version or published date to record, and no `SDKs` pointer is
+  wired into apis.yml — A-Mark ships no SDK.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

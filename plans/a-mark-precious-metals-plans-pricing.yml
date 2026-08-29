@@ -4,44 +4,44 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: A-Mark Precious Metals
 providerId: a-mark-precious-metals
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+generated: '2026-08-29'
+method: searched
+source: >-
+  Enumerated every page in https://www.amark.com/page-sitemap.xml and
+  https://www.gold.com/page-sitemap.xml on 2026-08-29 and searched for a pricing or plans
+  page. Neither site has one.
+modified: '2026-08-29'
+reconciled: true
 tags:
   - Precious Metals
   - Trading
   - Wholesale
   - Finance
-description: A-Mark Precious Metals operates wholesale trading desks and direct-to-dealer programs but
-  does not publish a public developer pricing page or self-service API plans. Trading and integration
-  arrangements are negotiated bilaterally with established dealers and financial institutions.
-notes: No public developer pricing — placeholder only. Access requires an existing dealer/wholesale relationship
-  with A-Mark.
+description: >-
+  A-Mark publishes no API plans and no developer pricing of any kind. This artifact was
+  previously a 2026-05-04 bulk-sweep placeholder that invented a "Dealer / Wholesale
+  Account" plan tier; that entry was not sourced from anything A-Mark publishes and has
+  been removed. The honest measurement is zero published plans.
+notes: >-
+  A-Mark's public sitemaps contain no /pricing, /plans, /developers or /api page.
+  Commercial terms for the wholesale trading relationship — spreads, settlement, credit
+  lines, lease and consignment rates — are negotiated bilaterally under a dealer agreement
+  and never published. Retail bullion product prices ARE public on the storefront
+  (www.amark.com/products/), but those are commodity prices per item, not API plans, and
+  the storefront gates dealer pricing behind login (the theme ships a
+  "login-to-prices-msg" element). plan_count is 0 by measurement, not by omission.
+plan_count: 0
+plans: []
 sources:
-  - https://www.amark.com/services
-plans:
-  - id: a-mark-precious-metals-dealer
-    name: Dealer / Wholesale Account
-    type: enterprise
-    description: Negotiated wholesale-trading relationship; no public per-call pricing.
-    entries:
-      - label: Wholesale account
-        name: dealer_account
-        type: subscription
-        metric: contract
-        limit: -1
-        timeFrame: year
-        geo: global
-        unit: 1
-        price: contact A-Mark sales
-        userMultiplied: false
-    elements:
-      - name: Wholesale precious metals trading
-      - name: Direct-to-consumer (Goldline) integrations
-      - name: Logistics and storage services
-      - name: Account access governed by trading agreement
+  - url: https://www.amark.com/page-sitemap.xml
+    http_status: 200
+    note: 21 pages; no pricing or plans page
+  - url: https://www.gold.com/page-sitemap.xml
+    http_status: 200
+    note: 43 pages; no pricing or plans page
+  - url: https://www.amark.com/services/
+    http_status: 200
+    note: services described in prose; no rate card
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

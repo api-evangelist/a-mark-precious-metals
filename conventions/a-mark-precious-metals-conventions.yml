@@ -1,0 +1,96 @@
+generated: '2026-08-29'
+method: probed
+source: >-
+  Live probes of portal.amark.com and trading.amark.com; no provider documentation exists
+  to search.
+provider: A-Mark Precious Metals
+providerId: a-mark-precious-metals
+description: >-
+  A-Mark documents no API conventions. The few entries that can be asserted here come from
+  observable behaviour of the trading portal and its backing Web API; the rest are
+  recorded as undocumented rather than guessed. Nothing in this file is inferred from
+  marketing copy.
+auth:
+  style: oauth2-password-grant
+  header: 'Authorization: Bearer <token>'
+  token_endpoint: https://portal.amark.com/connect/token
+  detail: >-
+    Confidential client + resource-owner credentials. See
+    authentication/a-mark-precious-metals-authentication.yml.
+  source: https://portal.amark.com/.well-known/openid-configuration
+idempotency:
+  supported: unknown
+  header: null
+  scope: null
+  retention: null
+  note: >-
+    No idempotency header, key or retry contract is documented, and none can be observed
+    without portal credentials. Recorded as unknown — NOT as absent, and no `Idempotency`
+    pointer is wired, because asserting either way would be a guess.
+pagination:
+  style: undocumented
+  note: The backing Web API is unreachable anonymously; no pagination contract observable.
+versioning:
+  style: uri-path
+  current: v1
+  note: >-
+    Observed only — trading.amark.com routes /v1/* into its Web API. No versioning policy
+    is published. See lifecycle/a-mark-precious-metals-lifecycle.yml.
+error_envelope:
+  shape: proprietary
+  example_field: Message
+  observed: >-
+    '{"Message":"No HTTP resource was found that matches the request URI
+    ''https://trading.amark.com:8444/v1/openapi.json''."}' — the ASP.NET Web API default
+    envelope. Note it leaks the internal origin host and port (:8444) to anonymous callers.
+  problem_json: false
+  source: https://trading.amark.com/v1/openapi.json
+rate_limit_signaling:
+  headers: []
+  note: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After headers observed on any anonymous
+    response. See rate-limits/a-mark-precious-metals-rate-limits.yml.
+request_id_tracing:
+  supported: unknown
+  note: No correlation/request-id header documented or observed anonymously.
+metadata: {supported: unknown}
+field_expansion: {supported: unknown}
+dry_run_mode:
+  supported: na
+  note: >-
+    No publicly reachable write surface, so there is nothing to rehearse against. `na`
+    rather than a zero.
+reversibility:
+  grade: na
+  applicable: false
+  detail: >-
+    A-Mark exposes no public write API. The trading write surface (placing, amending and
+    cancelling metals orders) exists behind the A-Mark Trading Portal login at
+    portal.amark.com and is unreachable without dealer credentials, so no reversal
+    operation, operationId or reversal window can be read from any published source.
+    Reversal terms in the wholesale business are contractual, not API-level: A-Mark's own
+    /risk/ page states that under its customer agreements A-Mark itself holds the option
+    to "buy in" a customer's short position to protect against a widening deficit — a
+    unilateral A-Mark right, not a customer-callable undo. Because no write surface is
+    publicly callable, reversibility, dry_run_mode and idempotency-as-a-runtime-contract
+    are all `na` here and stay in the denominator rather than scoring zero.
+    NO REVERSAL WINDOW IS RECORDED because A-Mark publishes none; inventing one for a
+    physical-settlement metals trade could cost a reader real money.
+  operations: []
+  window: null
+  evidence:
+    - url: https://portal.amark.com/login
+      http_status: 200
+      note: portal login — the only door to the write surface
+    - url: https://www.amark.com/risk/
+      http_status: 200
+      note: contractual "buy in" language; an A-Mark right, not an API reversal
+cross_references:
+  - authentication/a-mark-precious-metals-authentication.yml
+  - scopes/a-mark-precious-metals-scopes.yml
+  - lifecycle/a-mark-precious-metals-lifecycle.yml
+  - rate-limits/a-mark-precious-metals-rate-limits.yml
+  - conformance/a-mark-precious-metals-conformance.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

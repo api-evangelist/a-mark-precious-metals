@@ -1,0 +1,58 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  Search of amark.com, gold.com and ir.gold.com for versioning, deprecation, SLA and
+  status-page surfaces; DNS probes for status/trust subdomains.
+provider: A-Mark Precious Metals
+providerId: a-mark-precious-metals
+description: >-
+  A-Mark publishes no API lifecycle surface of any kind. The one lifecycle event that IS
+  public and material is corporate, not technical: A-Mark Precious Metals, Inc. is
+  renaming to Gold.com, Inc. and moving to the NYSE under the ticker GOLD, and every
+  investor-relations and legal URL is migrating from amark.com to gold.com.
+versioning:
+  scheme: undocumented
+  current: null
+  docs: null
+  observed: >-
+    trading.amark.com routes a /v1/ path prefix into its Web API (a /v1/* request returns
+    the ASP.NET JSON 404 envelope while an unrouted path returns the HTML error page), so
+    a v1 URI-path version exists. A-Mark publishes no versioning policy describing it.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  note: No deprecation or sunset policy published. No RFC 8594 headers observable without credentials.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    Availability is described only in marketing prose — trading desks staffed 17 hours a
+    day and the A-Mark Trading Portal advertised as available 24/7. No numeric uptime
+    commitment is published.
+status_page: null
+status_page_note: >-
+  No status page. status.amark.com, trust.amark.com, security.amark.com and
+  status.gold.com all fail to resolve in DNS.
+deprecated_operations: []
+corporate_lifecycle:
+  event: rebrand-and-exchange-transfer
+  detail: >-
+    A-Mark Precious Metals, Inc. (NASDAQ: AMRK) is becoming Gold.com, Inc. and
+    transferring to the New York Stock Exchange under the ticker GOLD, alongside a $33M
+    acquisition of Monex Deposit Company. A-Mark now appears as one brand among ~20 on
+    gold.com/brands/ (JM Bullion, Goldline, Silver.com, Provident Metals, Stack's Bowers,
+    Sunshine Minting, Monex and others).
+  evidence:
+    - url: https://ir.gold.com/news-events/press-releases/detail/211/a-mark-precious-metals-to-become-gold-com-and-transfer-to-the-new-york-stock-exchange/
+      note: linked directly from the www.amark.com home page
+    - url: https://www.gold.com/brands/amark/
+      http_status: 200
+    - url: https://ir.amark.com/news-events/press-releases
+      http_status: 200
+      note: redirects to https://ir.gold.com/news-events/press-releases
+    - url: https://www.linkedin.com/company/a-mark-precious-metals
+      http_status: 200
+      note: redirects to https://www.linkedin.com/company/goldcominc
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

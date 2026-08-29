@@ -1,0 +1,32 @@
+generated: '2026-08-29'
+method: searched
+status: none
+provider: A-Mark Precious Metals
+providerId: a-mark-precious-metals
+description: >-
+  A-Mark ships no MCP server, and there is nothing in this repo to derive a candidate tool
+  list from — no OpenAPI, no GraphQL SDL, no published operation inventory. Recorded as a
+  verified absence with no invented tools and no invented endpoint.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []
+searched:
+  - target: mcp.amark.com
+    result: NXDOMAIN
+  - target: npm registry (@amark, amark)
+    result: no first-party MCP package
+  - target: amark.com / gold.com documentation
+    result: no MCP, agent or AI-integration surface published
+  - target: OpenAPI in this repo (for a derived candidate tool list)
+    result: none present — STEP 0b contract discovery found no machine-readable contract
+note: >-
+  No `MCPServer` pointer is wired into apis.yml. A pointer would assert that A-Mark serves
+  an agent surface, which this probe shows it does not.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

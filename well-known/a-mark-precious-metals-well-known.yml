@@ -1,0 +1,109 @@
+generated: '2026-08-29'
+method: probed
+source: live GET probes of /.well-known/* on every A-Mark host discovered in STEP 0b
+provider: A-Mark Precious Metals
+providerId: a-mark-precious-metals
+description: >-
+  A-Mark serves exactly one real /.well-known document: an OAuth 2.0 / OpenID Connect
+  discovery document on portal.amark.com, the A-Mark Trading Portal. It is genuine JSON
+  (application/json, 575 bytes) naming issuer https://portal.amark.com/ and the token
+  endpoint https://portal.amark.com/connect/token. Everything else 404s. Note the two
+  distinct false-positive shapes recorded below: www.amark.com is a WordPress site that
+  returns a 404 status with a full 114KB HTML "Page not found" body, and portal.amark.com
+  is an Angular single-page app that returns HTTP 200 with a 3,602-byte HTML shell for
+  every unmatched path — only the openid-configuration and jwks paths break out of the
+  shell and return real JSON.
+hit_count: 2
+hosts:
+  - host: https://portal.amark.com
+    note: >-
+      Angular SPA catch-all. Every unmatched path answers 200 with an identical 3,602-byte
+      HTML shell (<title>A-Mark - Portal</title>); those are recorded as soft-404 controls,
+      not documents.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: application/json;charset=UTF-8
+        bytes: 575
+        file: a-mark-precious-metals-openid-configuration.json
+      - path: /.well-known/jwks
+        status: 200
+        content_type: application/json;charset=UTF-8
+        bytes: 11
+        file: a-mark-precious-metals-jwks.json
+        note: >-
+          Served, well-formed, and EMPTY — {"keys":[]}. The portal issues tokens the
+          password grant signs symmetrically, so no public verification key is published.
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: text/html
+        bytes: 3602
+        soft_404_control: true
+        note: SPA shell, not a document — no RFC 8414 metadata served.
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/html
+        bytes: 3602
+        soft_404_control: true
+      - path: /.well-known/agent-card.json
+        status: 200
+        content_type: text/html
+        bytes: 3602
+        soft_404_control: true
+  - host: https://www.amark.com
+    note: >-
+      WordPress/WooCommerce. Returns HTTP 404 with a 114,835-byte themed HTML error page
+      for every /.well-known path.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.gold.com
+    note: >-
+      The successor corporate brand (A-Mark Precious Metals, Inc. is becoming Gold.com,
+      Inc., NYSE: GOLD). WordPress; 404 on every /.well-known path.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://trading.amark.com
+    note: >-
+      ASP.NET Web API host behind the portal (its own error envelope discloses the origin
+      as trading.amark.com:8444). Returns a JSON 404 envelope, not HTML, for /.well-known.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+  - host: https://api.amark.com
+    note: >-
+      Resolves in DNS to 34.213.182.177 but never completes a TLS connection — every
+      request returned curl code 000 with no response. Recorded as unreachable, not absent.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: '<no response>'
+      - path: /.well-known/agent-card.json
+        status: '<no response>'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

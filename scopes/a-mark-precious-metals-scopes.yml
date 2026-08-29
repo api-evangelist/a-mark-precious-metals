@@ -1,0 +1,45 @@
+generated: '2026-08-29'
+method: probed
+source: https://portal.amark.com/.well-known/openid-configuration
+provider: A-Mark Precious Metals
+providerId: a-mark-precious-metals
+description: >-
+  Scopes advertised by the A-Mark Trading Portal's OAuth 2.0 / OIDC discovery document.
+  These are the standard OIDC scope set as emitted by the portal's identity server; A-Mark
+  publishes no scope reference page and no product-specific scopes (no trading, pricing,
+  order or inventory scopes are advertised). Descriptions below are the RFC/OIDC-standard
+  meanings of each scope name, not A-Mark prose — the provider documents none.
+docs: null
+docs_note: No public scopes/permissions reference page exists on amark.com or gold.com.
+schemes:
+  - name: OAuth2
+    token_url: https://portal.amark.com/connect/token
+    source: https://portal.amark.com/.well-known/openid-configuration
+scope_count: 6
+scopes:
+  - name: openid
+    standard: OpenID Connect Core 1.0
+    description: Requests an OpenID Connect authentication response.
+  - name: email
+    standard: OpenID Connect Core 1.0
+    description: Requests the email and email_verified claims.
+  - name: phone
+    standard: OpenID Connect Core 1.0
+    description: Requests the phone_number and phone_number_verified claims.
+  - name: profile
+    standard: OpenID Connect Core 1.0
+    description: Requests the default profile claims.
+  - name: offline_access
+    standard: OpenID Connect Core 1.0
+    description: Requests a refresh token so the client can act without the user present.
+  - name: roles
+    standard: non-standard (identity-server convention)
+    description: >-
+      Requests the caller's portal role assignments. A-Mark does not document what roles
+      exist or what each one authorizes.
+x-evidence:
+  - url: https://portal.amark.com/.well-known/openid-configuration
+    http_status: 200
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
