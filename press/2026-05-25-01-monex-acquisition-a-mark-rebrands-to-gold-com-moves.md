@@ -1,7 +1,9 @@
 ---
 title: 'Monex Acquisition: A-Mark Rebrands to Gold.com, Moves ...'
 url: https://www.latimes.com/b2b/banking-finance/story/2025-11-25/a-mark-rebrands-gold-com-acquires-monex-33-million
-date: '2026-05-25'
+published: '2025-11-25'
+date_basis: url-derived
+harvested: '2026-05-25'
 query: '"A-Mark Precious Metals" press release artificial intelligence'
 position: 1
 source: serpapi-google
