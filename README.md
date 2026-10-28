@@ -1,4 +1,4 @@
-# A-Mark Precious Metals (a-mark-precious-metals)
+# A-Mark Precious Metals
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,115 +64,114 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-A-Mark Precious Metals is a full-service precious metals trading company that wholesales gold, silver, platinum, and palladium bullion and coins to dealers, financial institutions, and investors. They operate trading desks 17 hours daily across global locations (US, Asia, Vienna) and offer wholesale sales, direct-to-consumer, logistics and storage, minting, and collateralized loans services.
+A-Mark Precious Metals is a full-service precious metals trading company that wholesales gold, silver, platinum, and palladium bullion and coins to dealers, financial institutions, and investors. They operate trading desks 17 hours daily across global locations (US, Asia, Vienna) and offer wholesale sales, direct-to-consumer, logistics and storage, minting, and collateralized loans services. The company is renaming to Gold.com, Inc. and transferring to the NYSE under the ticker GOLD, alongside its $33M acquisition of Monex Deposit Company; A-Mark now sits as one brand inside the Gold.com brand family. A-Mark runs no public developer program: trading access is through the credentialed A-Mark Trading Portal at portal.amark.com, whose OAuth 2.0 discovery document is the only machine-readable contract the company serves.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/a-mark-precious-metals/refs/heads/main/apis.yml)
+**Areas:** Precious Metals · Trading · Wholesale · Gold · Silver · Bullion · Finance
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## A-Mark Precious Metals on APIs.io
 
-## Tags:
+Everything profiled for A-Mark Precious Metals is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/a-mark-precious-metals/](https://apis.io/providers/a-mark-precious-metals/)** — or go straight to one of the APIs or properties below.
 
- - Precious Metals, Trading, Wholesale, Gold, Silver, Bullion, Finance
+### APIs (4)
 
-## Timestamps
+- [A-Mark Wholesale Trading](https://apis.io/apis/a-mark-precious-metals/a-mark-wholesale-trading/) — A-Mark's wholesale precious metals trading platform enables dealers and financial institutions to buy and sell gold, silver, platinum, and palladium bullion…
+- [A-Mark Logistics and Storage](https://apis.io/apis/a-mark-precious-metals/a-mark-logistics-storage/) — A-Mark provides comprehensive logistics, receiving, storage, and delivery services for precious metals through state-of-the-art facilities. Includes…
+- [A-Mark Minting](https://apis.io/apis/a-mark-precious-metals/a-mark-minting/) — A-Mark offers custom minting services blending traditional craftsmanship with modern technology for production of precious metal coins, bars, and rounds…
+- [A-Mark Collateralized Loans](https://apis.io/apis/a-mark-precious-metals/a-mark-collateralized-loans/) — A-Mark provides financing options using precious metals as collateral, offering collateralized loans to qualified commercial customers against precious…
 
-- **Created:** 2026-04-19
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### A-Mark Wholesale Trading
-A-Mark's wholesale precious metals trading platform enables dealers and financial institutions to buy and sell gold, silver, platinum, and palladium bullion products. Offers spot, forward, and deferred transactions with limit and stop orders, 48-hour settlement, and payment in USD, EUR, or product.
+#### Security (2)
 
-**Human URL:** [https://www.amark.com](https://www.amark.com)
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags:
+- [A Mark Precious Metals Authentication](https://apis.io/security/a-mark-precious-metals/a-mark-precious-metals-authentication/)
+- [A Mark Precious Metals Domain Security](https://apis.io/security/a-mark-precious-metals/a-mark-precious-metals-domain-security/)
 
- - Precious Metals, Trading, Wholesale, Gold, Silver, Platinum, Palladium
+#### OAuth scopes (1)
 
-#### Properties
+The permissions the API asks for.
 
-- [Documentation](https://www.amark.com/services)
+- [A Mark Precious Metals Scopes](https://apis.io/scopes/a-mark-precious-metals/a-mark-precious-metals-scopes/)
 
-### A-Mark Logistics and Storage
-A-Mark provides comprehensive logistics, receiving, storage, and delivery services for precious metals through state-of-the-art facilities. Includes precious metals leases and consignments with competitive rates.
+#### Plans and pricing (1)
 
-**Human URL:** [https://www.amark.com/services](https://www.amark.com/services)
+Published plans, tiers and prices.
 
-#### Tags:
+- [A Mark Precious Metals Plans Pricing](https://apis.io/plans/a-mark-precious-metals/a-mark-precious-metals-plans-pricing/)
 
- - Precious Metals, Logistics, Storage, Warehousing
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://www.amark.com/services)
+- [A Mark Precious Metals Rate Limits](https://apis.io/rate-limits/a-mark-precious-metals/a-mark-precious-metals-rate-limits/)
 
-### A-Mark Minting
-A-Mark offers custom minting services blending traditional craftsmanship with modern technology for production of precious metal coins, bars, and rounds from sovereign and private mints worldwide.
+#### FinOps (1)
 
-**Human URL:** [https://www.amark.com/services](https://www.amark.com/services)
+What the API costs to run, by operation.
 
-#### Tags:
+- [A Mark Precious Metals Finops](https://apis.io/finops/a-mark-precious-metals/a-mark-precious-metals-finops/)
 
- - Precious Metals, Minting, Custom Coins, Manufacturing
+## Where to find this API
 
-#### Properties
-
-- [Documentation](https://www.amark.com/services)
-
-### A-Mark Collateralized Loans
-A-Mark provides financing options using precious metals as collateral, offering collateralized loans to qualified commercial customers against precious metal holdings.
-
-**Human URL:** [https://www.amark.com/services](https://www.amark.com/services)
-
-#### Tags:
-
- - Precious Metals, Finance, Loans, Collateral
-
-#### Properties
-
-- [Documentation](https://www.amark.com/services)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.amark.com)
 - [Documentation](https://www.amark.com/services)
-- [Contact](https://www.amark.com/contact)
+- [Terms of service](https://www.amark.com/terms-of-service/)
+- [Privacy policy](https://www.amark.com/privacy-policy/)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Wholesale Trading | Bulk precious metals trading with market making through trading desks operating 17 hours daily across US, Asia, and Vienna locations. |
-| Spot and Forward Transactions | Spot and forward deferred transactions for qualified commercial customers in gold, silver, platinum, and palladium. |
-| Order Types | Limit orders, stop orders, and immediate execution capabilities for flexible precious metals trading strategies. |
-| Settlement Options | 48-hour settlement with payment accepted in US Dollars, Euros, or product. |
-| Storage and Logistics | State-of-the-art facilities for receiving, storage, and delivery of precious metals products globally. |
-| Custom Minting | Custom minting services for coins, bars, and rounds blending traditional craftsmanship with modern production technology. |
-| Collateralized Financing | Precious metals leases, consignments, and collateralized loans with competitive rates for qualified customers. |
-| Direct-to-Consumer | Retail precious metals sales to individual consumers through their JMBullion.com brand. |
+**Kin Score 21.6** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 27.6 |
 
-| Name | Description |
-|------|-------------|
-| Wholesale Dealer Trading | Precious metals dealers purchasing bulk gold, silver, platinum, and palladium bullion for resale to retail customers. |
-| Financial Institution Hedging | Banks and financial institutions trading precious metals for portfolio hedging, risk management, and investment purposes. |
-| Investor Bullion Acquisition | Institutional investors acquiring physical precious metals as a store of value and inflation hedge. |
-| Logistics and Custody | Dealers and institutions using A-Mark's storage and logistics services for secure precious metals custody and delivery. |
-| Custom Coin Production | Organizations commissioning custom precious metal coins, bars, and rounds for commemorative, promotional, or commercial purposes. |
-| Precious Metals Financing | Businesses leveraging precious metals holdings as collateral for working capital financing and liquidity. |
+**Agent readiness 9.0** — agent-aware
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-| Name | Description |
-|------|-------------|
-| JMBullion.com | A-Mark's direct-to-consumer retail brand for individual precious metals buyers selling gold, silver, platinum, and palladium. |
-| Global Trading Desks | Integrated trading operations across US, Asian, and European (Vienna) offices for 17-hour daily market coverage. |
-| Sovereign and Private Mints | Sourcing relationships with sovereign and private mints worldwide for diverse product availability and custom minting. |
+**Regulatory alignment 38.0** — Securities & Market Data
 
-## Maintainers
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/a-mark-precious-metals/](https://apis.io/providers/a-mark-precious-metals/).
 
-**FN:** Kin Lane
+## How this profile is made
 
-**Email:** kin@apievangelist.com
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for A-Mark Precious Metals: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/a-mark-precious-metals/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
